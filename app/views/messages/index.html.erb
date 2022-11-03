@@ -1,0 +1,23 @@
+<h1>Puma 6 ~ Development Deadlock test 🌻🔒</h1>
+
+<p>
+  This is an attempt the create a simple application to reproduce this error.
+</p>
+
+<ul>
+  <li>Development mode Only</li>
+  <li>Only when ActionCable/websockets are active</li>
+  <li>Deadlock on a code reload</li>
+</ul>
+
+<%= turbo_stream_from "messages" %>
+
+<div class='messages'>
+<%= turbo_frame_tag "messages" do %>
+<% end %>
+</div>
+
+<%= form_tag :messages, method: :post do %>
+  <%= text_area_tag :message, '', rows: 4, cols: 40 %>
+  <%= submit_tag %>
+<% end %>
